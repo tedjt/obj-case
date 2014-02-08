@@ -48,6 +48,7 @@ module.exports.del = function (obj, key) {
 
 function multiple (fn) {
   return function (obj, key, val) {
+    if (obj === null || obj === undefined) return;
     var keys = key.split('.');
     if (keys.length === 0) return;
 
