@@ -63,6 +63,22 @@ function multiple (fn) {
   };
 }
 
+/**
+ * Compose applying the function to a nested index
+ */
+
+function findIndex(arr, indexes) {
+  if (!indexes || !arr.length) return arr;
+  while(indexes.length > 0) {
+    var index = indexes.shift()[1];
+    if (arr.length > index) {
+      arr = arr[index];
+    } else {
+      return;
+    }
+  }
+  return arr;
+}
 
 /**
  * Find an object by its key
@@ -71,9 +87,13 @@ function multiple (fn) {
  */
 
 function find (obj, key) {
+  var indexTraverse = key.match(/\[\d\]/g);
+  key = key.split('[')[0];
   for (var i = 0; i < cases.length; i++) {
     var cased = cases[i](key);
-    if (obj.hasOwnProperty(cased)) return obj[cased];
+    if (obj.hasOwnProperty(cased)) {
+      return findIndex(obj[cased], indexTraverse);
+    }
   }
 }
 

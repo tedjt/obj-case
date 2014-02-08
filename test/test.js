@@ -20,6 +20,12 @@ describe('obj-case', function () {
       expect(objCase({ a : { b : false }}, 'a.b')).to.eql(false);
       expect(objCase({ a : { b : 0 }}, 'a.b')).to.eql(0);
     });
+
+    it('should find array indexes', function () {
+      expect(objCase({ a : [{ b : false }]}, 'a[0].b')).to.eql(false);
+      expect(objCase({ a : { b : [0, [0, 6, {d: 9}], 8] }}, 'a.b[1][2].d')).to.eql(9);
+    });
+
   });
 
 
