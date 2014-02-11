@@ -68,7 +68,7 @@ function multiple (fn) {
  */
 
 function findIndex(arr, indexes) {
-  if (!indexes || !arr.length) return arr;
+  if (!arr || !indexes || !arr.length) return arr;
   while(indexes.length > 0) {
     var index = indexes.shift()[1];
     if (arr.length > index) {
