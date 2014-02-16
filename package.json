@@ -19,7 +19,7 @@
   "author": "Segmentio",
   "license": "MIT",
   "dependencies": {
-    "case": "git://github.com/ianstormtaylor/case"
+    "case": "git://github.com/tedjt/case"
   },
   "devDependencies": {
     "mocha": "~1.12.0",
