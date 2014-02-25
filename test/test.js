@@ -56,5 +56,13 @@ describe('obj-case', function () {
         "Calvin" : { dog : 'the tedster' }
       });
     });
+
+    it('should replace nested keys with array syntax', function () {
+      var obj = { a : [{ b : false }]};
+      //, 'a[0].b'
+      expect(objCase.replace(obj, "a[0].b", 'the tedster')).to.eql({
+        a : [{ b : 'the tedster' }]
+      });
+    });
   });
 });
